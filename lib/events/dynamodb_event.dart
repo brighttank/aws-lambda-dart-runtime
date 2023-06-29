@@ -54,18 +54,24 @@ class AwsDynamoDBUpdateEventRecord {
   @JsonKey()
   final String? eventSourceARN;
 
+  /// Event Source ARN ...
+  @JsonKey()
+  final AwsDynamoDBUpdateRecord? dynamodb;
+
   factory AwsDynamoDBUpdateEventRecord.fromJson(Map<String, dynamic> json) =>
       _$AwsDynamoDBUpdateEventRecordFromJson(json);
 
   Map<String, dynamic> toJson() => _$AwsDynamoDBUpdateEventRecordToJson(this);
 
-  const AwsDynamoDBUpdateEventRecord(
-      {this.eventId,
-      this.eventName,
-      this.eventSource,
-      this.eventVersion,
-      this.awsRegion,
-      this.eventSourceARN});
+  const AwsDynamoDBUpdateEventRecord({
+    this.eventId,
+    this.eventName,
+    this.eventSource,
+    this.eventVersion,
+    this.awsRegion,
+    this.eventSourceARN,
+    this.dynamodb,
+  });
 }
 
 /// DynamoDB Update Event ...

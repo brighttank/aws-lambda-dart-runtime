@@ -31,6 +31,10 @@ AwsDynamoDBUpdateEventRecord _$AwsDynamoDBUpdateEventRecordFromJson(
       eventVersion: json['eventVersion'] as String?,
       awsRegion: json['awsRegion'] as String?,
       eventSourceARN: json['eventSourceARN'] as String?,
+      dynamodb: json['dynamodb'] == null
+          ? null
+          : AwsDynamoDBUpdateRecord.fromJson(
+              json['dynamodb'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AwsDynamoDBUpdateEventRecordToJson(
@@ -42,6 +46,7 @@ Map<String, dynamic> _$AwsDynamoDBUpdateEventRecordToJson(
       'eventVersion': instance.eventVersion,
       'awsRegion': instance.awsRegion,
       'eventSourceARN': instance.eventSourceARN,
+      'dynamodb': instance.dynamodb,
     };
 
 AwsDynamoDBUpdateEvent _$AwsDynamoDBUpdateEventFromJson(
