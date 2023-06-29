@@ -13,11 +13,11 @@ class AwsDynamoDBUpdateRecord extends Event {
 
   /// New Image ...
   @JsonKey(name: 'NewImage')
-  final Map<String, dynamic>? oldImage;
+  final Map<String, dynamic>? newImage;
 
   /// Old Image ....
   @JsonKey(name: 'OldImage')
-  final Map<String, dynamic>? newImage;
+  final Map<String, dynamic>? oldImage;
 
   factory AwsDynamoDBUpdateRecord.fromJson(Map<String, dynamic> json) =>
       _$AwsDynamoDBUpdateRecordFromJson(json);
