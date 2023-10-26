@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   json_annotation: ^4.8.1
-  meta: ^1.11.0
+  meta: ^1.9.0 # max version allowed by flutter 3.13.8
   http: ^1.1.0
 
 dev_dependencies:
