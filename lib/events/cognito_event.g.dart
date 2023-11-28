@@ -40,13 +40,10 @@ AwsCognitoEvent _$AwsCognitoEventFromJson(Map<String, dynamic> json) =>
       callerContext: (json['callerContext'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
-      request: json['request'] == null
-          ? null
-          : AwsCognitoRequest.fromJson(json['request'] as Map<String, dynamic>),
-      response: json['response'] == null
-          ? null
-          : AwsCognitoResponse.fromJson(
-              json['response'] as Map<String, dynamic>),
+      request:
+          AwsCognitoRequest.fromJson(json['request'] as Map<String, dynamic>),
+      response:
+          AwsCognitoResponse.fromJson(json['response'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AwsCognitoEventToJson(AwsCognitoEvent instance) =>
@@ -63,7 +60,8 @@ Map<String, dynamic> _$AwsCognitoEventToJson(AwsCognitoEvent instance) =>
 
 AwsCognitoRequest _$AwsCognitoRequestFromJson(Map<String, dynamic> json) =>
     AwsCognitoRequest(
-      userAttributes: json['userAttributes'] as Map<String, dynamic>?,
+      userAttributes:
+          json['userAttributes'] as Map<String, dynamic>? ?? const {},
       challengeName: json['challengeName'] as String?,
       session: (json['session'] as List<dynamic>?)
           ?.map((e) => ChallengeResult.fromJson(e as Map<String, dynamic>))

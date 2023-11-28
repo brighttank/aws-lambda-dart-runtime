@@ -73,30 +73,33 @@ class AwsCognitoEvent extends Event {
   final Map<String, String>? callerContext;
 
   @JsonKey()
-  final AwsCognitoRequest? request;
+  final AwsCognitoRequest request;
 
   @JsonKey()
-  final AwsCognitoResponse? response;
+  final AwsCognitoResponse response;
 
-  const AwsCognitoEvent({this.version,
+  const AwsCognitoEvent({
+    this.version,
     this.triggerSource,
     this.region,
     this.userPoolId,
     this.userName,
     this.callerContext,
-    this.request,
-    this.response});
+    required this.request,
+    required this.response,
+  });
 
   factory AwsCognitoEvent.fromJson(Map<String, dynamic> json) =>
       _$AwsCognitoEventFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AwsCognitoEventToJson(this).stripNullValues();
+  Map<String, dynamic> toJson() =>
+      _$AwsCognitoEventToJson(this).stripNullValues();
 }
 
 @JsonSerializable()
 class AwsCognitoRequest {
   @JsonKey()
-  final Map<String, dynamic>? userAttributes;
+  final Map<String, dynamic> userAttributes;
 
   @JsonKey()
   final String? challengeName;
@@ -132,7 +135,7 @@ class AwsCognitoRequest {
   final String? challengeAnswer;
 
   const AwsCognitoRequest({
-    this.userAttributes,
+    this.userAttributes = const {},
     this.challengeName,
     this.session,
     this.validationData,
@@ -149,7 +152,8 @@ class AwsCognitoRequest {
   factory AwsCognitoRequest.fromJson(Map<String, dynamic> json) =>
       _$AwsCognitoRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AwsCognitoRequestToJson(this).stripNullValues();
+  Map<String, dynamic> toJson() =>
+      _$AwsCognitoRequestToJson(this).stripNullValues();
 }
 
 @JsonSerializable()
@@ -211,7 +215,8 @@ class AwsCognitoResponse {
   @JsonKey()
   String? challengeMetadata;
 
-  AwsCognitoResponse({this.autoConfirmUser,
+  AwsCognitoResponse({
+    this.autoConfirmUser,
     this.autoVerifyEmail,
     this.autoVerifyPhone,
     this.claimsOverrideDetails,
@@ -231,7 +236,8 @@ class AwsCognitoResponse {
   factory AwsCognitoResponse.fromJson(Map<String, dynamic> json) =>
       _$AwsCognitoResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AwsCognitoResponseToJson(this).stripNullValues();
+  Map<String, dynamic> toJson() =>
+      _$AwsCognitoResponseToJson(this).stripNullValues();
 }
 
 @JsonSerializable()
@@ -248,10 +254,11 @@ class AwsGroupConfiguration {
   @JsonKey()
   final Map<String, String>? clientMetadata;
 
-  const AwsGroupConfiguration({this.groupsToOverride,
-    this.iamRolesToOverride,
-    this.preferredRole,
-    this.clientMetadata});
+  const AwsGroupConfiguration(
+      {this.groupsToOverride,
+      this.iamRolesToOverride,
+      this.preferredRole,
+      this.clientMetadata});
 
   factory AwsGroupConfiguration.fromJson(Map<String, dynamic> json) =>
       _$AwsGroupConfigurationFromJson(json);
@@ -270,9 +277,10 @@ class AwsClaimOverrideDetails {
   @JsonKey()
   final AwsGroupConfiguration? groupOverrideDetails;
 
-  const AwsClaimOverrideDetails({this.claimsToAddOrOverride,
-    this.claimsToSuppress,
-    this.groupOverrideDetails});
+  const AwsClaimOverrideDetails(
+      {this.claimsToAddOrOverride,
+      this.claimsToSuppress,
+      this.groupOverrideDetails});
 
   factory AwsClaimOverrideDetails.fromJson(Map<String, dynamic> json) =>
       _$AwsClaimOverrideDetailsFromJson(json);
