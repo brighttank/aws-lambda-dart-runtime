@@ -1,17 +1,5 @@
 import 'package:aws_lambda_dart_runtime/aws_lambda_dart_runtime.dart';
 
-import '../events/alb_event.dart';
-import '../events/alexa_event.dart';
-import '../events/apigateway_event.dart';
-import '../events/appsync_event.dart';
-import '../events/cloudwatch_event.dart';
-import '../events/cloudwatch_log_event.dart';
-import '../events/cognito_event.dart';
-import '../events/dynamodb_event.dart';
-import '../events/s3_event.dart';
-import '../events/sqs_event.dart';
-import '../events/kinesis_data_stream_event.dart';
-
 /// Event is the abstraction for every event that
 /// can be ingested by a handler.
 ///
@@ -38,7 +26,9 @@ abstract class Event {
     AwsDynamoDBUpdateEvent: (Map<String, dynamic>? json) =>
         AwsDynamoDBUpdateEvent.fromJson(json!),
     AwsKinesisDataStreamEvent: (Map<String, dynamic>? json) =>
-        AwsKinesisDataStreamEvent.fromJson(json!)
+        AwsKinesisDataStreamEvent.fromJson(json!),
+    AwsEventBridgeEvent: (Map<String, dynamic>? json) =>
+        AwsEventBridgeEvent.fromJson(json!),
   };
 
   /// Checks if a type of event is already registered.

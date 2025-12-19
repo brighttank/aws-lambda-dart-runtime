@@ -17,8 +17,9 @@ AwsCloudwatchEvent _$AwsCloudwatchEventFromJson(Map<String, dynamic> json) =>
       account: json['account'] as String?,
       detailType: json['detail-type'] as String?,
       detail: json['detail'] as Map<String, dynamic>?,
-      time:
-          json['time'] == null ? null : DateTime.parse(json['time'] as String),
+      time: json['time'] == null
+          ? null
+          : DateTime.parse(json['time'] as String),
     );
 
 Map<String, dynamic> _$AwsCloudwatchEventToJson(AwsCloudwatchEvent instance) =>

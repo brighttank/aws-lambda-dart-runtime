@@ -7,6 +7,7 @@ export 'events/cloudwatch_event.dart';
 export 'events/cloudwatch_log_event.dart';
 export 'events/cognito_event.dart';
 export 'events/dynamodb_event.dart';
+export 'events/event_bridge_event.dart';
 export 'events/kinesis_data_firehose_event.dart';
 export 'events/kinesis_data_stream_event.dart';
 export 'events/s3_event.dart';

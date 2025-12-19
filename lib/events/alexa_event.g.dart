@@ -14,24 +14,22 @@ AwsAlexaEventHeader _$AwsAlexaEventHeaderFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$AwsAlexaEventHeaderToJson(
-        AwsAlexaEventHeader instance) =>
-    <String, dynamic>{
-      'payloadVersion': instance.payloadVersion,
-      'namespace': instance.namespace,
-      'name': instance.name,
-    };
+  AwsAlexaEventHeader instance,
+) => <String, dynamic>{
+  'payloadVersion': instance.payloadVersion,
+  'namespace': instance.namespace,
+  'name': instance.name,
+};
 
 AwsAlexaEvent _$AwsAlexaEventFromJson(Map<String, dynamic> json) =>
     AwsAlexaEvent(
       header: json['header'] == null
           ? null
           : AwsAlexaEventHeader.fromJson(
-              json['header'] as Map<String, dynamic>),
+              json['header'] as Map<String, dynamic>,
+            ),
       payload: json['payload'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$AwsAlexaEventToJson(AwsAlexaEvent instance) =>
-    <String, dynamic>{
-      'header': instance.header,
-      'payload': instance.payload,
-    };
+    <String, dynamic>{'header': instance.header, 'payload': instance.payload};

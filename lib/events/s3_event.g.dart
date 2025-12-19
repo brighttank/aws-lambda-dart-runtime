@@ -7,15 +7,13 @@ part of 's3_event.dart';
 // **************************************************************************
 
 AwsS3Event _$AwsS3EventFromJson(Map<String, dynamic> json) => AwsS3Event(
-      records: (json['Records'] as List<dynamic>?)
-          ?.map((e) => AwsS3EventRecord.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  records: (json['Records'] as List<dynamic>?)
+      ?.map((e) => AwsS3EventRecord.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$AwsS3EventToJson(AwsS3Event instance) =>
-    <String, dynamic>{
-      'Records': instance.records,
-    };
+    <String, dynamic>{'Records': instance.records};
 
 AwsS3EventRecord _$AwsS3EventRecordFromJson(Map<String, dynamic> json) =>
     AwsS3EventRecord(
@@ -29,15 +27,12 @@ AwsS3EventRecord _$AwsS3EventRecordFromJson(Map<String, dynamic> json) =>
       userIdentity: json['userIdentity'] == null
           ? null
           : AwsS3UserIdentity.fromJson(
-              json['userIdentity'] as Map<String, dynamic>),
-      requestParameters:
-          (json['requestParameters'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
-      responseElements:
-          (json['responseElements'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
+              json['userIdentity'] as Map<String, dynamic>,
+            ),
+      requestParameters: (json['requestParameters'] as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, e as String)),
+      responseElements: (json['responseElements'] as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, e as String)),
       s3: json['s3'] == null
           ? null
           : AwsS3Data.fromJson(json['s3'] as Map<String, dynamic>),
@@ -57,31 +52,32 @@ Map<String, dynamic> _$AwsS3EventRecordToJson(AwsS3EventRecord instance) =>
     };
 
 AwsS3Data _$AwsS3DataFromJson(Map<String, dynamic> json) => AwsS3Data(
-      s3SchemaVersion: json['s3SchemaVersion'] as String?,
-      configurationId: json['configurationId'] as String?,
-      bucket: json['bucket'] == null
-          ? null
-          : AwsS3Bucket.fromJson(json['bucket'] as Map<String, dynamic>),
-      object: json['object'] == null
-          ? null
-          : AWSS3EventObject.fromJson(json['object'] as Map<String, dynamic>),
-    );
+  s3SchemaVersion: json['s3SchemaVersion'] as String?,
+  configurationId: json['configurationId'] as String?,
+  bucket: json['bucket'] == null
+      ? null
+      : AwsS3Bucket.fromJson(json['bucket'] as Map<String, dynamic>),
+  object: json['object'] == null
+      ? null
+      : AWSS3EventObject.fromJson(json['object'] as Map<String, dynamic>),
+);
 
 Map<String, dynamic> _$AwsS3DataToJson(AwsS3Data instance) => <String, dynamic>{
-      's3SchemaVersion': instance.s3SchemaVersion,
-      'configurationId': instance.configurationId,
-      'bucket': instance.bucket,
-      'object': instance.object,
-    };
+  's3SchemaVersion': instance.s3SchemaVersion,
+  'configurationId': instance.configurationId,
+  'bucket': instance.bucket,
+  'object': instance.object,
+};
 
 AwsS3Bucket _$AwsS3BucketFromJson(Map<String, dynamic> json) => AwsS3Bucket(
-      name: json['name'] as String?,
-      ownerIdentity: json['ownerIdentity'] == null
-          ? null
-          : AwsS3UserIdentity.fromJson(
-              json['ownerIdentity'] as Map<String, dynamic>),
-      arn: json['arn'] as String?,
-    );
+  name: json['name'] as String?,
+  ownerIdentity: json['ownerIdentity'] == null
+      ? null
+      : AwsS3UserIdentity.fromJson(
+          json['ownerIdentity'] as Map<String, dynamic>,
+        ),
+  arn: json['arn'] as String?,
+);
 
 Map<String, dynamic> _$AwsS3BucketToJson(AwsS3Bucket instance) =>
     <String, dynamic>{
@@ -93,7 +89,7 @@ Map<String, dynamic> _$AwsS3BucketToJson(AwsS3Bucket instance) =>
 AWSS3EventObject _$AWSS3EventObjectFromJson(Map<String, dynamic> json) =>
     AWSS3EventObject(
       key: json['key'] as String?,
-      size: json['size'] as int?,
+      size: (json['size'] as num?)?.toInt(),
       eTag: json['eTag'] as String?,
       sequencer: json['sequencer'] as String?,
     );
@@ -107,11 +103,7 @@ Map<String, dynamic> _$AWSS3EventObjectToJson(AWSS3EventObject instance) =>
     };
 
 AwsS3UserIdentity _$AwsS3UserIdentityFromJson(Map<String, dynamic> json) =>
-    AwsS3UserIdentity(
-      principalId: json['principalId'] as String?,
-    );
+    AwsS3UserIdentity(principalId: json['principalId'] as String?);
 
 Map<String, dynamic> _$AwsS3UserIdentityToJson(AwsS3UserIdentity instance) =>
-    <String, dynamic>{
-      'principalId': instance.principalId,
-    };
+    <String, dynamic>{'principalId': instance.principalId};

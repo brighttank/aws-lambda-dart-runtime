@@ -40,10 +40,12 @@ AwsCognitoEvent _$AwsCognitoEventFromJson(Map<String, dynamic> json) =>
       callerContext: (json['callerContext'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
-      request:
-          AwsCognitoRequest.fromJson(json['request'] as Map<String, dynamic>),
-      response:
-          AwsCognitoResponse.fromJson(json['response'] as Map<String, dynamic>),
+      request: AwsCognitoRequest.fromJson(
+        json['request'] as Map<String, dynamic>,
+      ),
+      response: AwsCognitoResponse.fromJson(
+        json['response'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$AwsCognitoEventToJson(AwsCognitoEvent instance) =>
@@ -78,12 +80,13 @@ AwsCognitoRequest _$AwsCognitoRequestFromJson(Map<String, dynamic> json) =>
       groupConfiguration: json['groupConfiguration'] == null
           ? null
           : AwsGroupConfiguration.fromJson(
-              json['groupConfiguration'] as Map<String, dynamic>),
+              json['groupConfiguration'] as Map<String, dynamic>,
+            ),
       userNotFound: json['userNotFound'] as bool?,
       privateChallengeParameters:
           (json['privateChallengeParameters'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
+            (k, e) => MapEntry(k, e as String),
+          ),
       challengeAnswer: json['challengeAnswer'] as String?,
     );
 
@@ -105,35 +108,37 @@ Map<String, dynamic> _$AwsCognitoRequestToJson(AwsCognitoRequest instance) =>
 
 AwsCognitoResponse _$AwsCognitoResponseFromJson(Map<String, dynamic> json) =>
     AwsCognitoResponse(
-      autoConfirmUser: json['autoConfirmUser'] as bool?,
-      autoVerifyEmail: json['autoVerifyEmail'] as bool?,
-      autoVerifyPhone: json['autoVerifyPhone'] as bool?,
-      claimsOverrideDetails: json['claimsOverrideDetails'] == null
-          ? null
-          : AwsClaimOverrideDetails.fromJson(
-              json['claimsOverrideDetails'] as Map<String, dynamic>),
-      userAttributes: (json['userAttributes'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
-      finalUserStatus: json['finalUserStatus'] as String?,
-      desiredDeliveryMediums: (json['desiredDeliveryMediums'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      forceAliasCreation: json['forceAliasCreation'] as bool?,
-      messageAction: json['messageAction'] as String?,
-      smsMessage: json['smsMessage'] as String?,
-      emailMessage: json['emailMessage'] as String?,
-      emailSubject: json['emailSubject'] as String?,
-      publicChallengeParameters:
-          (json['publicChallengeParameters'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
-      privateChallengeParameters:
-          (json['privateChallengeParameters'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
-      challengeMetadata: json['challengeMetadata'] as String?,
-    )
+        autoConfirmUser: json['autoConfirmUser'] as bool?,
+        autoVerifyEmail: json['autoVerifyEmail'] as bool?,
+        autoVerifyPhone: json['autoVerifyPhone'] as bool?,
+        claimsOverrideDetails: json['claimsOverrideDetails'] == null
+            ? null
+            : AwsClaimOverrideDetails.fromJson(
+                json['claimsOverrideDetails'] as Map<String, dynamic>,
+              ),
+        userAttributes: (json['userAttributes'] as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, e as String),
+        ),
+        finalUserStatus: json['finalUserStatus'] as String?,
+        desiredDeliveryMediums:
+            (json['desiredDeliveryMediums'] as List<dynamic>?)
+                ?.map((e) => e as String)
+                .toList(),
+        forceAliasCreation: json['forceAliasCreation'] as bool?,
+        messageAction: json['messageAction'] as String?,
+        smsMessage: json['smsMessage'] as String?,
+        emailMessage: json['emailMessage'] as String?,
+        emailSubject: json['emailSubject'] as String?,
+        publicChallengeParameters:
+            (json['publicChallengeParameters'] as Map<String, dynamic>?)?.map(
+              (k, e) => MapEntry(k, e as String),
+            ),
+        privateChallengeParameters:
+            (json['privateChallengeParameters'] as Map<String, dynamic>?)?.map(
+              (k, e) => MapEntry(k, e as String),
+            ),
+        challengeMetadata: json['challengeMetadata'] as String?,
+      )
       ..issueTokens = json['issueTokens'] as bool?
       ..failAuthentication = json['failAuthentication'] as bool?
       ..answerCorrect = json['answerCorrect'] as bool?
@@ -163,49 +168,50 @@ Map<String, dynamic> _$AwsCognitoResponseToJson(AwsCognitoResponse instance) =>
     };
 
 AwsGroupConfiguration _$AwsGroupConfigurationFromJson(
-        Map<String, dynamic> json) =>
-    AwsGroupConfiguration(
-      groupsToOverride: (json['groupsToOverride'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      iamRolesToOverride: (json['iamRolesToOverride'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      preferredRole: json['preferredRole'] as String?,
-      clientMetadata: (json['clientMetadata'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
-    );
+  Map<String, dynamic> json,
+) => AwsGroupConfiguration(
+  groupsToOverride: (json['groupsToOverride'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  iamRolesToOverride: (json['iamRolesToOverride'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  preferredRole: json['preferredRole'] as String?,
+  clientMetadata: (json['clientMetadata'] as Map<String, dynamic>?)?.map(
+    (k, e) => MapEntry(k, e as String),
+  ),
+);
 
 Map<String, dynamic> _$AwsGroupConfigurationToJson(
-        AwsGroupConfiguration instance) =>
-    <String, dynamic>{
-      'groupsToOverride': instance.groupsToOverride,
-      'iamRolesToOverride': instance.iamRolesToOverride,
-      'preferredRole': instance.preferredRole,
-      'clientMetadata': instance.clientMetadata,
-    };
+  AwsGroupConfiguration instance,
+) => <String, dynamic>{
+  'groupsToOverride': instance.groupsToOverride,
+  'iamRolesToOverride': instance.iamRolesToOverride,
+  'preferredRole': instance.preferredRole,
+  'clientMetadata': instance.clientMetadata,
+};
 
 AwsClaimOverrideDetails _$AwsClaimOverrideDetailsFromJson(
-        Map<String, dynamic> json) =>
-    AwsClaimOverrideDetails(
-      claimsToAddOrOverride:
-          (json['claimsToAddOrOverride'] as Map<String, dynamic>?)?.map(
+  Map<String, dynamic> json,
+) => AwsClaimOverrideDetails(
+  claimsToAddOrOverride:
+      (json['claimsToAddOrOverride'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
-      claimsToSuppress: (json['claimsToSuppress'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      groupOverrideDetails: json['groupOverrideDetails'] == null
-          ? null
-          : AwsGroupConfiguration.fromJson(
-              json['groupOverrideDetails'] as Map<String, dynamic>),
-    );
+  claimsToSuppress: (json['claimsToSuppress'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  groupOverrideDetails: json['groupOverrideDetails'] == null
+      ? null
+      : AwsGroupConfiguration.fromJson(
+          json['groupOverrideDetails'] as Map<String, dynamic>,
+        ),
+);
 
 Map<String, dynamic> _$AwsClaimOverrideDetailsToJson(
-        AwsClaimOverrideDetails instance) =>
-    <String, dynamic>{
-      'claimsToAddOrOverride': instance.claimsToAddOrOverride,
-      'claimsToSuppress': instance.claimsToSuppress,
-      'groupOverrideDetails': instance.groupOverrideDetails,
-    };
+  AwsClaimOverrideDetails instance,
+) => <String, dynamic>{
+  'claimsToAddOrOverride': instance.claimsToAddOrOverride,
+  'claimsToSuppress': instance.claimsToSuppress,
+  'groupOverrideDetails': instance.groupOverrideDetails,
+};
