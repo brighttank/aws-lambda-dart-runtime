@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:aws_lambda_dart_runtime/runtime/event.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -46,4 +48,8 @@ class AwsEventBridgeEvent extends Event {
 
   Map<String, dynamic> toJson() =>
       _$AwsEventBridgeEventToJson(this).stripNullValues();
+
+  String toString() =>
+      'AwsEventBridgeEvent(detailType: $detailType' +
+      (detail == null ? ')' : ', details: ${jsonEncode(detail)})');
 }
