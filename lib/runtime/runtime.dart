@@ -88,7 +88,7 @@ class Runtime {
   /// sends the [InvocationResult] via [_client.postInvocationResponse(result)] to the API.
   /// If there is an error during the execution. The exception gets caught
   /// and the error is posted via [_client.postInvocationError(err)] to the API.
-  void invoke() async {
+  Future<void> invoke() async {
     while (true) {
       await _handleInvocation(await _client.getNextInvocation());
     }
